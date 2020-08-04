@@ -24,3 +24,20 @@ out.
   - where else can this be used effectively
 
 I would like to lay out my thoughts on this matter here.
+
+## Semantics on undefined
+
+There are a few different ways this could work. Let's lay out a couple of different situations and evaluate.
+
+### In an assignment
+
+Presumably, if you are doing an assignment, you expect `undef` to be returned
+
+    my $data = $request->to_json?->{data};
+    
+### In a conditional
+
+If it's in a conditional, it should probably immediately evaluate false. Although that would depend on what you expect...
+What about the following?
+
+    if ($cache->value?->is_expired) { ... }
